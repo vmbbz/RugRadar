@@ -52,6 +52,7 @@ Only `PASS` sets `policyAllowsAction` to `true`; there is currently no action to
 - [Development plan](docs/DEVELOPMENT_PLAN.md) — architecture, policy, milestones, tests, and release gates.
 - [Operator runbook](docs/RUNBOOK.md) — setup, commands, PayBox configuration, failure handling, and release procedure.
 - [Demo guide](docs/DEMO.md) — reproducible local and hosted assessment flow.
+- [Validation record](docs/VALIDATION.md) — exact local artifact evidence, remote mapping, and external gate status.
 - [Research brief](docs/research/2026-10-16-product-research.md) — platform constraints, provider evaluation, competitor landscape, probes, and sources.
 - [Changelog](CHANGELOG.md) — shipped policy and behavior changes.
 - [Original hackathon notes](HackathonPlan.md) — retained for provenance; illustrative code there is superseded by the implemented architecture.
