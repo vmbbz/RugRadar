@@ -1,0 +1,32 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and transient files
+*.log
+*.tmp
+*.temp
+*.cache
+.tmp/
+tmp/
+temp/
+
+# Editor and operating-system state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Mobile/build artifacts are outside this project's source scope
+*.apk
+*.aab
+.gradle/
