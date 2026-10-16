@@ -1,6 +1,6 @@
 # RugRadar development plan
 
-Status: proposed implementation plan
+Status: Milestones 0–2 complete locally; hosted and submission gates remain open
 Plan date: 2026-10-16
 Initial release target: PayBox Chapter 1 submission
 Primary platform: Base mainnet through a PayBox marketplace plugin
@@ -60,7 +60,7 @@ The submission is successful when:
 1. **Unknown is not safe.** Missing high-signal fields, unsupported analysis, and upstream failure cannot produce `PASS`.
 2. **Evidence precedes verdict.** Every blocker and warning maps to a named normalized observation.
 3. **No cross-call authorization.** A prior `assess_token_risk` result is informative only. The action tool rescans.
-4. **Address identity is exact.** Normalize for comparison, preserve a checksummed display address, and bind all evidence and quote validation to the same Base address.
+4. **Address identity is exact.** Validate and canonicalize addresses to lowercase for comparison, and bind all evidence and future quote validation to the same Base address. Names and symbols are informational only.
 5. **External data is untrusted.** Parse with strict bounded schemas, reject unexpected types at decision boundaries, and never interpolate raw provider text into trusted claims.
 6. **No silent degradation.** Source failures and omitted fields appear in `coverage.gaps` and affect the verdict.
 7. **One proposal, one intent.** The EVM destination, value, calldata, buy token, taker, amount, slippage, chain, and expiry must agree.
@@ -114,19 +114,15 @@ RugRadar/
       evidence.ts             normalized domain types
       policy.ts               pure verdict engine
       assessment.ts           provider orchestration and result assembly
-      amounts.ts              exact decimal/atomic conversions
+      amounts.ts              exact decimal/atomic conversions, milestone 4
     providers/
       goplus.ts               token-security adapter
       dexscreener.ts          market-context adapter
       zeroex.ts               guarded quote adapter, milestone 2
     tools/
       assess-token-risk.ts
-      propose-guarded-buy.ts  milestone 2
-  test/
-    fixtures/                 minimal sanitized provider fixtures
-    unit/
-    contract/
-    integration/
+      propose-guarded-buy.ts  milestone 4
+  test/                       deterministic unit and boundary tests
   scripts/                    official starter scripts, unchanged unless required
   docs/
     research/
@@ -147,7 +143,7 @@ Keep business logic out of `plugin.ts`. Provider adapters own transport and exte
 
 ### 6.1 `assess_token_risk`
 
-Input draft:
+Implemented input:
 
 ```json
 {
@@ -155,7 +151,7 @@ Input draft:
 }
 ```
 
-Output draft:
+Implemented output shape (abridged):
 
 ```json
 {
@@ -166,32 +162,31 @@ Output draft:
     "symbol": "EXM"
   },
   "verdict": "REVIEW",
-  "actionEligible": false,
-  "policyVersion": "2026-10-16.1",
-  "observedAt": "2026-10-16T21:00:00Z",
+  "policyAllowsAction": false,
+  "policyVersion": "2026-10-17.1",
+  "observedAt": "2026-10-17T00:00:00.000Z",
   "blockers": [],
   "warnings": [
     {
       "code": "UPGRADEABLE_PROXY",
-      "message": "The contract is upgradeable or delegates execution."
+      "severity": "WARNING",
+      "message": "The token uses a proxy or delegated implementation path."
     }
   ],
   "coverage": {
-    "level": "PARTIAL",
+    "level": "COMPLETE",
     "sources": [
-      { "name": "goplus", "status": "AVAILABLE" },
-      { "name": "dexscreener", "status": "AVAILABLE" }
+      { "name": "goplus", "status": "AVAILABLE", "latencyMs": 120 },
+      { "name": "dexscreener", "status": "AVAILABLE", "latencyMs": 95 }
     ],
     "gaps": []
   },
   "evidence": {
-    "contract": {},
-    "trading": {},
-    "privileges": {},
+    "security": {},
     "market": {}
   },
   "limitations": [
-    "This is automated risk evidence, not a security audit or guarantee."
+    "Automated evidence is not a smart-contract audit, financial advice, or a guarantee against loss."
   ]
 }
 ```
@@ -258,33 +253,29 @@ Quote invariants before proposal creation:
 
 ### Initial hard blockers
 
-The exact mapping will be locked against current provider schema fixtures during implementation. Candidate blockers include:
+The implemented blocker mapping is:
 
 - explicit honeypot finding;
 - cannot buy, cannot sell all, or sell restriction finding;
 - hidden owner or reclaimable ownership;
 - owner-configurable per-address tax/slippage;
-- modifiable taxes without a narrowly justified trusted-token exception;
+- modifiable taxes; provider trust never overrides an explicit adverse value;
 - blacklist/whitelist controls capable of selectively blocking users;
-- transfer pausing or trading-disable authority;
-- mint authority combined with untrusted/unknown governance;
-- closed source with dependent checks unavailable;
-- buy or sell tax over the strict v1 ceiling;
-- malicious contract/address signal;
-- malformed, internally inconsistent, or wrong-chain provider identity;
-- no usable liquidity for an action;
-- any required action signal missing.
+- transfer pausing;
+- closed source;
+- self-destruct behavior;
+- buy, sell, or transfer tax above 1,000 basis points.
+
+Malformed data and missing required security fields produce `UNKNOWN`, unless another explicit blocker is already present. The trusted-token exception only relaxes missing proxy-dependent fields; it does not erase explicit findings.
 
 ### Review conditions
 
 - upgradeable proxy or delegate-call path without an additional critical finding;
 - retained owner privileges that are transparent but material;
-- concentrated holders or liquidity providers beyond a documented threshold;
 - very young deepest pair;
-- low aggregate liquidity or severe liquidity concentration;
+- deepest-pair liquidity below USD 50,000 or no matching Base pair;
 - nonzero but sub-ceiling transfer/buy/sell taxes;
 - unusual trading cooldown, anti-whale, or external-call behavior;
-- conflicting non-critical provider observations.
 
 ### Unknown conditions
 
@@ -302,8 +293,8 @@ A weighted score is deferred until there is a labeled fixture corpus, explicit c
 
 ## 8. External-call engineering
 
-- Use `AbortSignal.timeout` with provider-specific budgets and a total orchestration budget under eight seconds.
-- Call GoPlus and DEX Screener concurrently with `Promise.allSettled`.
+- Use `AbortSignal.timeout` with a 3.5-second per-provider budget and a concurrent total under eight seconds.
+- Call GoPlus and DEX Screener concurrently; convert unexpected adapter rejection into a structured unavailable result.
 - Cap response bytes before JSON parsing where the runtime permits; reject oversized results.
 - Use `redirect: "error"`.
 - Hardcode exact HTTPS origins; never accept user-supplied hosts or paths.
@@ -422,7 +413,7 @@ The non-secret `0x-version: v2` header is set in code. Never store the key in `.
 
 The deadline-driven sequence intentionally creates a valid submission candidate before the action stretch.
 
-### Milestone 0 — owner gates and repository baseline (30 minutes)
+### Milestone 0 — owner gates and repository baseline (complete locally except owner-controlled gates)
 
 - Confirm PayBox registration/KYC and portal access.
 - Confirm public/private repository preference and demo X account.
@@ -431,7 +422,7 @@ The deadline-driven sequence intentionally creates a valid submission candidate 
 
 Exit: remote contains the reviewed plan and no artifacts/secrets.
 
-### Milestone 1 — trusted starter and skeleton (45–60 minutes)
+### Milestone 1 — trusted starter and skeleton (complete)
 
 - Copy every PayBox starter v1.0.2 file from the official source.
 - Verify files against the official starter manifest.
@@ -443,7 +434,7 @@ Exit: untouched starter passes; deterministic artifact hash recorded.
 
 Commit: `chore: bootstrap PayBox plugin starter`
 
-### Milestone 2 — normalized assessment core (2–3 hours)
+### Milestone 2 — normalized assessment core (complete locally)
 
 - Implement schemas, provider adapters, exact parsing, evidence model, source statuses, and concurrent orchestration.
 - Implement policy v1 as a pure function.
@@ -598,4 +589,4 @@ During implementation, add and maintain:
 
 ## 17. Immediate next action
 
-After this plan is reviewed, execute Milestone 1 exactly: acquire the official starter v1.0.2 files, verify their manifest, run the untouched tests in WSL2, and commit the bootstrap before writing RugRadar business logic.
+Freeze and commit Milestone 2 after full local validation, push and verify the remote SHA, then execute Milestone 3 through the participant-controlled PayBox portal. Do not represent the plugin as hosted or submitted until those external gates are recorded.

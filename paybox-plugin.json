@@ -1,6 +1,6 @@
 {
-  "tool": "echo",
+  "tool": "assess_token_risk",
   "arguments": {
-    "message": "hello paybox"
+    "tokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
   }
 }

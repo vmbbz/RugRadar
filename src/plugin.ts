@@ -1,33 +1,33 @@
 import { McpServer } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
-import * as z from "zod/v4";
+
+import { assessTokenInputSchema, riskAssessmentSchema } from "./schemas.js";
+import { createAssessTokenRiskHandler } from "./tools/assess-token-risk.js";
 
 const PROTOCOL_VERSION = "2026-07-28";
 
 function createServer() {
   const server = new McpServer(
-    { name: "my-plugin", version: "0.1.0" },
+    { name: "rugradar", version: "0.1.0" },
     { supportedProtocolVersions: [PROTOCOL_VERSION] },
   );
 
   server.registerTool(
-    "echo",
+    "assess_token_risk",
     {
-      title: "Echo message",
-      description: "Returns the provided message.",
-      inputSchema: z.object({ message: z.string().min(1).max(256) }).strict(),
-      outputSchema: z.object({ message: z.string() }).strict(),
+      title: "Assess Base token risk",
+      description:
+        "Checks a Base token against current GoPlus security evidence and DEX Screener market context. Returns PASS, REVIEW, BLOCK, or UNKNOWN with explicit reasons. PASS is not a guarantee of safety.",
+      inputSchema: assessTokenInputSchema,
+      outputSchema: riskAssessmentSchema,
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
         idempotentHint: true,
-        openWorldHint: false,
+        openWorldHint: true,
       },
     },
-    async ({ message }) => ({
-      content: [{ type: "text", text: message }],
-      structuredContent: { message },
-    }),
+    createAssessTokenRiskHandler(),
   );
 
   return server;
