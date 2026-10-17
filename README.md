@@ -59,3 +59,7 @@ Only `PASS` sets `policyAllowsAction` to `true`; there is currently no action to
 ## Safety notice
 
 RugRadar is decision-support software, not financial advice, a smart-contract audit, or a guarantee against loss. Automated providers can be incomplete, stale, wrong, or blind to off-chain fraud and future privileged actions.
+
+## License
+
+RugRadar is available under the [MIT License](LICENSE).
