@@ -428,7 +428,7 @@ Exit: remote contains the reviewed plan and no artifacts/secrets.
 - Verify files against the official starter manifest.
 - Rename the sample project/server to RugRadar without changing tooling behavior.
 - Run the untouched echo starter in WSL2.
-- Run CI on Linux Node 24.21.0 with pnpm 11.11.0, read-only permissions, and commit-pinned official actions.
+- Add CI on Linux Node 24.21.0 after the repository owner's GitHub Actions billing lock is resolved. Until then, preserve the exact local validation record and do not claim CI proof.
 
 Exit: untouched starter passes; deterministic artifact hash recorded.
 

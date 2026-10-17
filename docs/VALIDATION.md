@@ -43,6 +43,7 @@ The live sample proves connectivity only at the recorded time. It does not freez
 |---|---|
 | Local assessment implementation | Verified |
 | Source pushed to GitHub | Verified for the code-bearing commit above |
+| GitHub Actions CI | Not available; first job never started because the owner account is locked due to a billing issue |
 | PayBox artifact upload | Not run in this workspace |
 | Hosted PayBox checks | Not run in this workspace |
 | Portal tool calls | Not run in this workspace |

@@ -12,7 +12,6 @@ All notable RugRadar policy and tool behavior changes are recorded here.
 - Versioned categorical policy with `PASS`, `REVIEW`, `BLOCK`, and `UNKNOWN` outcomes.
 - Named critical findings, warnings, coverage gaps, normalized evidence, and explicit limitations.
 - Deterministic unit, build, artifact, schema, discovery, and sample-call validation.
-- Read-only GitHub Actions validation with exact Node.js and pnpm versions and commit-pinned official actions.
 
 ### Security
 

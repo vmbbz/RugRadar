@@ -65,7 +65,7 @@ wc -c dist/plugin.mjs
 
 Never commit `dist/`, `node_modules/`, logs, `.env` files, APK/AAB files, caches, or temporary downloads.
 
-The public repository also runs `.github/workflows/ci.yml` for pushes to `main` and pull requests. CI is supporting evidence, not a replacement for reproducing the artifact locally or running PayBox hosted checks.
+GitHub Actions is not an active release gate: the first attempted job was prevented from starting by an owner-account billing lock. The unverified workflow was removed so the repository does not claim CI evidence it does not have. After the owner resolves the account state, restore a read-only Linux workflow using the pinned toolchain; CI remains supporting evidence, not a replacement for local artifact reproduction or PayBox hosted checks.
 
 ## 4. Tool behavior
 
