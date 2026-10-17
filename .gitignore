@@ -20,6 +20,9 @@ coverage/
 tmp/
 temp/
 
+# Local planning notes
+HackathonPlan.md
+
 # Editor and operating-system state
 .idea/
 .vscode/

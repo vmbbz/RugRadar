@@ -55,7 +55,6 @@ Only `PASS` sets `policyAllowsAction` to `true`; there is currently no action to
 - [Validation record](docs/VALIDATION.md) — exact local artifact evidence, remote mapping, and external gate status.
 - [Research brief](docs/research/2026-10-16-product-research.md) — platform constraints, provider evaluation, competitor landscape, probes, and sources.
 - [Changelog](CHANGELOG.md) — shipped policy and behavior changes.
-- [Original hackathon notes](HackathonPlan.md) — retained for provenance; illustrative code there is superseded by the implemented architecture.
 
 ## Safety notice
 
