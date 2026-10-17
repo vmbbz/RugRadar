@@ -12,7 +12,7 @@ The Base assessment milestone is implemented and locally validated. The plugin c
 
 The implementation deliberately contains no signing, private-key access, transaction proposal, swap, or broadcast path. `propose_guarded_buy` remains a gated future milestone and must not ship until its quote invariants, refusal behavior, PayBox simulation, and hosted checks all pass.
 
-Hosted PayBox execution, participant KYC, portal configuration, submission, and the public demo are external release gates; local conformance does not prove any of them.
+Release `0.1.1` has passed hosted PayBox checks and a live portal tool call, has been submitted to the hackathon, and is available for private testing while PayBox reviews it. Private agent exercise, manual review, and the public demo remain separate gates.
 
 ## Quick start
 

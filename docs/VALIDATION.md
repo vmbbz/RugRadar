@@ -52,7 +52,18 @@ The replacement `0.1.1` upload was exercised through the PayBox developer portal
 - 30 matching Base pairs, no blockers, no warnings, and no evidence gaps; and
 - `isError: false`.
 
-This proves the replacement's hosted read-only path worked for that invocation. It does not turn `PASS` into a safety guarantee, prove future provider availability, or establish project submission by itself.
+This proves the replacement's hosted read-only path worked for that invocation. It does not turn `PASS` into a safety guarantee or prove future provider availability.
+
+## Submission evidence
+
+At `2026-10-17T08:41:19Z`, the participant supplied a portal screenshot showing:
+
+- the project status badge `Submitted`;
+- the confirmation “RugRadar was submitted. Your hackathon entry is complete”;
+- the project marked available in PayBox for private testing while under review; and
+- the replacement hosted test result still visible with `PASS`, policy `2026-10-17.2`, and server version `0.1.1`.
+
+This establishes hackathon submission for the tested replacement. It does not establish public marketplace approval or private agent invocation.
 
 ## Superseded upload
 
@@ -69,9 +80,9 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Hosted PayBox checks | Replacement loaded and exposed the expected tool; portal tool execution succeeded |
 | Portal tool call | Release `0.1.1` returned `PASS` with `COMPLETE` coverage and both providers `AVAILABLE` |
 | Participant registration/KYC | Not separately confirmed in this workspace |
-| Project submission | Not submitted |
-| Private-plugin agent exercise | Pending submission |
+| Project submission | Confirmed submitted in the PayBox portal |
+| Private-plugin agent exercise | Available; enablement and agent invocation pending |
 | Public X demo | Not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
 
-The replacement is ready for submission. Accept the hackathon terms and select **Submit Project**, then record the portal's submission confirmation separately.
+The submitted replacement is ready for private testing. Enable it in PayBox, discover its installed identifiers, invoke it through an agent, and record that result separately.

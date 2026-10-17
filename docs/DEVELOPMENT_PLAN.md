@@ -1,6 +1,6 @@
 # RugRadar development plan
 
-Status: Milestones 0–2 complete locally; hosted and submission gates remain open
+Status: Assessment release submitted; private agent exercise, review, and public demo remain
 Plan date: 2026-10-16
 Initial release target: PayBox Chapter 1 submission
 Primary platform: Base mainnet through a PayBox marketplace plugin
@@ -446,7 +446,7 @@ Exit: focused tests and full PayBox local test pass; negative cases cannot produ
 
 Commit: `feat: add evidence-backed Base token assessment`
 
-### Milestone 3 — hosted assessment proof (45–60 minutes)
+### Milestone 3 — hosted assessment proof (complete)
 
 - Upload the exact tested bundle.
 - Configure only GoPlus and DEX Screener hosts.
@@ -470,7 +470,7 @@ Exit: strict pass yields one accurately bound proposal; every other state yields
 
 Commit: `feat: add guarded Base token buy proposal`
 
-### Milestone 5 — submission package and demo (60–90 minutes)
+### Milestone 5 — submission package and demo (submission complete; private exercise and public demo pending)
 
 - Freeze code early enough to retest the final bytes.
 - Write `DEMO.md` with exact prompts, addresses, expected verdicts, refusal path, proposal path, and caveats.
@@ -589,4 +589,4 @@ During implementation, add and maintain:
 
 ## 17. Immediate next action
 
-Freeze and commit Milestone 2 after full local validation, push and verify the remote SHA, then execute Milestone 3 through the participant-controlled PayBox portal. Do not represent the plugin as hosted or submitted until those external gates are recorded.
+Enable the submitted plugin privately in PayBox, invoke `assess_token_risk` through an agent, record that user-journey evidence, and complete the short public demo without overstating what a `PASS` verdict means.
