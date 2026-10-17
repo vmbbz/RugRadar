@@ -49,7 +49,7 @@ export interface MarketEvidence {
   pairCount: number;
   aggregateLiquidityUsd: number;
   deepestLiquidityUsd: number | null;
-  primaryPairAddress: string | null;
+  primaryPairId: string | null;
   primaryDex: string | null;
   primaryPairAgeHours: number | null;
 }

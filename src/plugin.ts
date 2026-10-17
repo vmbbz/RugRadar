@@ -8,7 +8,7 @@ const PROTOCOL_VERSION = "2026-07-28";
 
 function createServer() {
   const server = new McpServer(
-    { name: "rugradar", version: "0.1.0" },
+    { name: "rugradar", version: "0.1.1" },
     { supportedProtocolVersions: [PROTOCOL_VERSION] },
   );
 

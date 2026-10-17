@@ -66,7 +66,7 @@ test("DEX Screener normalization filters chain and token, then ranks liquidity",
   assert.equal(result.pairCount, 2);
   assert.equal(result.aggregateLiquidityUsd, 200_000);
   assert.equal(result.deepestLiquidityUsd, 125_000);
-  assert.equal(result.primaryPairAddress, "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+  assert.equal(result.primaryPairId, "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
   assert.equal(result.primaryPairAgeHours, 72);
 });
 
@@ -75,10 +75,28 @@ test("DEX Screener empty result is valid market evidence with no pair", () => {
     pairCount: 0,
     aggregateLiquidityUsd: 0,
     deepestLiquidityUsd: null,
-    primaryPairAddress: null,
+    primaryPairId: null,
     primaryDex: null,
     primaryPairAgeHours: null,
   });
+});
+
+test("DEX Screener accepts bounded opaque pool identifiers", () => {
+  const nowMs = Date.parse("2026-10-17T00:00:00.000Z");
+  const bytes32Pool = "0x867dbb1b6417abcb3696d5a5d9cc38cbf9f0f6d17355515fe1c8303e791832c4";
+  const compositePool = "0x0C659734f1eEF9C63B7Ebdf78a164CDd745586Db-0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913-0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA";
+  const result = parseDexScreenerPayload([
+    pair(ADDRESS, "0x3333333333333333333333333333333333333333", bytes32Pool, 75_000, nowMs),
+    pair(ADDRESS, "0x4444444444444444444444444444444444444444", compositePool, 125_000, nowMs),
+  ], ADDRESS, nowMs);
+  assert.equal(result.pairCount, 2);
+  assert.equal(result.primaryPairId, compositePool);
+});
+
+test("DEX Screener rejects unsafe pool identifiers", () => {
+  assert.throws(() => parseDexScreenerPayload([
+    pair(ADDRESS, "0x3333333333333333333333333333333333333333", "pool id with spaces", 75_000, Date.now()),
+  ], ADDRESS, Date.now()));
 });
 
 function pair(base: string, quote: string, pairAddress: string, liquidityUsd: number, pairCreatedAt: number) {

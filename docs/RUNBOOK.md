@@ -1,6 +1,6 @@
 # RugRadar operator runbook
 
-This runbook covers the assessment-only v0.1.0 release candidate. It separates local proof from hosted PayBox proof and from project submission.
+This runbook covers the assessment-only v0.1.1 release candidate. It separates local proof from hosted PayBox proof and from project submission.
 
 ## 1. Supported release surface
 
@@ -9,7 +9,7 @@ This runbook covers the assessment-only v0.1.0 release candidate. It separates l
 - Network hosts: `api.gopluslabs.io`, `api.dexscreener.com`
 - Secrets: none
 - Transaction capability: none
-- Policy: `2026-10-17.1`
+- Policy: `2026-10-17.2`
 
 Do not add `api.0x.org`, a wallet credential, RPC credential, or signing secret for this release candidate. The bundled starter transaction helpers are not registered as tools.
 
@@ -143,4 +143,4 @@ If uploaded bytes do not match the recorded hash, discard the hosted version and
 - Suspected schema drift: stop claiming hosted readiness, sanitize and reproduce, patch with tests, and republish.
 - Policy defect: disable/unpublish the affected hosted version, fix and version the policy, then repeat local and hosted gates.
 - Secret exposure: RugRadar needs no secrets. If unrelated credentials appear in output or history, revoke them and follow the hosting platform's remediation procedure; deleting a branch alone is insufficient.
-- Transaction concern: this release cannot propose, sign, or broadcast a transaction. Any transaction prompt is outside RugRadar v0.1.0 and should be refused.
+- Transaction concern: this release cannot propose, sign, or broadcast a transaction. Any transaction prompt is outside RugRadar v0.1.1 and should be refused.

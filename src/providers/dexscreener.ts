@@ -6,11 +6,12 @@ import { marketEvidenceSchema } from "../schemas.js";
 import { requestJson, type FetchLike } from "./http.js";
 
 const evmAddress = z.string().regex(/^0x[0-9a-fA-F]{40}$/);
+const pairId = z.string().regex(/^[A-Za-z0-9._:-]{1,256}$/);
 const token = z.object({ address: evmAddress }).loose();
 const pairSchema = z.object({
   chainId: z.string().max(32),
   dexId: z.string().max(64),
-  pairAddress: evmAddress,
+  pairAddress: pairId,
   baseToken: token,
   quoteToken: token,
   liquidity: z.object({ usd: z.number().finite().min(0).max(1_000_000_000_000_000).nullish() }).loose().nullish(),
@@ -59,7 +60,7 @@ export function parseDexScreenerPayload(payload: unknown, address: string, nowMs
     pairCount: matchingPairs.length,
     aggregateLiquidityUsd: round(aggregate, 2),
     deepestLiquidityUsd: primary === undefined ? null : round(liquidity(primary), 2),
-    primaryPairAddress: primary?.pairAddress.toLowerCase() ?? null,
+    primaryPairId: primary?.pairAddress ?? null,
     primaryDex: primary?.dexId ?? null,
     primaryPairAgeHours: ageHours,
   });

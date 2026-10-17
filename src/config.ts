@@ -1,7 +1,7 @@
 export const BASE_CHAIN_ID = "8453";
 export const BASE_CAIP2 = "eip155:8453";
 export const BASE_DEXSCREENER_CHAIN = "base";
-export const POLICY_VERSION = "2026-10-17.1";
+export const POLICY_VERSION = "2026-10-17.2";
 
 export const PROVIDER_TIMEOUT_MS = 3_500;
 export const MAX_PROVIDER_RESPONSE_BYTES = 512 * 1024;

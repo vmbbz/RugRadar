@@ -30,7 +30,7 @@ export const safeMarket: MarketEvidence = {
   pairCount: 2,
   aggregateLiquidityUsd: 300_000,
   deepestLiquidityUsd: 250_000,
-  primaryPairAddress: "0x1111111111111111111111111111111111111111",
+  primaryPairId: "0x1111111111111111111111111111111111111111",
   primaryDex: "example-dex",
   primaryPairAgeHours: 720,
 };

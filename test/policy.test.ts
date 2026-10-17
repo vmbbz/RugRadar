@@ -167,7 +167,7 @@ test("market edge cases review while exact thresholds pass", () => {
     pairCount: 0,
     aggregateLiquidityUsd: 0,
     deepestLiquidityUsd: null,
-    primaryPairAddress: null,
+    primaryPairId: null,
     primaryDex: null,
     primaryPairAgeHours: null,
   }, availableSources);

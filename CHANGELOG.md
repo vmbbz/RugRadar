@@ -2,6 +2,14 @@
 
 All notable RugRadar policy and tool behavior changes are recorded here.
 
+## 0.1.1 - 2026-10-17
+
+### Fixed
+
+- Accept DEX Screener's bounded opaque `pairAddress` values for Base pools, including 20-byte addresses, 32-byte Uniswap pool IDs, and Balancer composite identifiers.
+- Rename normalized market output from `primaryPairAddress` to `primaryPairId` so the contract does not misrepresent opaque pool identifiers as EVM addresses.
+- Preserve fail-closed parsing while restoring current DEX Screener market coverage.
+
 ## 0.1.0 - 2026-10-17
 
 ### Added

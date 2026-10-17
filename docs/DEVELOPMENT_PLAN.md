@@ -163,7 +163,7 @@ Implemented output shape (abridged):
   },
   "verdict": "REVIEW",
   "policyAllowsAction": false,
-  "policyVersion": "2026-10-17.1",
+  "policyVersion": "2026-10-17.2",
   "observedAt": "2026-10-17T00:00:00.000Z",
   "blockers": [],
   "warnings": [

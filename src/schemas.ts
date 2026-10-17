@@ -56,7 +56,7 @@ export const marketEvidenceSchema = z.object({
   pairCount: z.number().int().min(0).max(256),
   aggregateLiquidityUsd: z.number().min(0).max(1_000_000_000_000_000),
   deepestLiquidityUsd: z.number().min(0).max(1_000_000_000_000_000).nullable(),
-  primaryPairAddress: tokenAddressSchema.nullable(),
+  primaryPairId: z.string().regex(/^[A-Za-z0-9._:-]{1,256}$/).nullable(),
   primaryDex: z.string().max(64).nullable(),
   primaryPairAgeHours: z.number().min(0).max(10_000_000).nullable(),
 }).strict();
