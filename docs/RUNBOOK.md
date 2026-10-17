@@ -135,6 +135,8 @@ These steps require participant-controlled portal access and cannot be proven by
 9. Submit the project explicitly; an uploaded plugin is not proof of submission.
 10. Verify the public demo and X URL without exposing unrelated accounts, emails, keys, or wallet information.
 
+When connecting an external agent through PayBox OAuth, grant only the credentials and duration needed for the demonstrated tools. RugRadar's assessment release is read-only and requires no wallet access. If PayBox cannot provide a suitably narrow grant, use an empty test wallet and a bounded expiration, or disconnect the agent immediately after the demo. Never record the OAuth consent, wallet-permission, or account-security screens.
+
 If uploaded bytes do not match the recorded hash, discard the hosted version and upload the tested artifact again. If a hosted fix changes source, repeat every affected local gate and create a new commit before rebuilding.
 
 ## 7. Incident posture

@@ -8,7 +8,7 @@ This record identifies the currently tested assessment artifact and separates ve
 |---|---|
 | Release | `0.1.1` |
 | Policy | `2026-10-17.2` |
-| Validation time | `2026-10-17T08:28:26Z` |
+| Validation time | `2026-10-17T09:06:32Z` (full-suite rerun after private-agent validation) |
 | Code-bearing commit | `528cf9156bb8f5addfae7b4ac7d1e0f1e17c408d` |
 | Branch | `main` |
 | Artifact | `dist/plugin.mjs` (generated and ignored) |
@@ -76,7 +76,25 @@ The participant supplied PayBox plugin screens showing acceptance and successful
 - tool `assess_token_risk`; and
 - status `Unofficial plugin · Enabled`, private to the participant's account.
 
-This proves the intended reviewed bytes and permissions were enabled privately. An invocation through an agent remains separate evidence.
+This proves the intended reviewed bytes and permissions were enabled privately. The agent invocation below is recorded separately.
+
+## Private-agent invocation evidence
+
+At `2026-10-17T08:58:38Z`, the participant supplied ChatGPT and PayBox screens plus the complete rendered result of a live private-agent invocation. The client:
+
+- connected to PayBox through OAuth;
+- discovered the privately enabled RugRadar plugin;
+- inspected the `assess_token_risk` tool schema;
+- invoked the tool for Base USDC (`0x833589fcd6edb6e08f4c7c32d4f71b54bda02913`); and
+- explicitly reported that the assessment was read-only and that no swap, transfer, signing request, payment, or other transaction was proposed or initiated.
+
+The returned structured evidence reported policy `2026-10-17.2`, `PASS`, `policyAllowsAction: true`, `COMPLETE` coverage, GoPlus `AVAILABLE` in 507 ms, DEX Screener `AVAILABLE` in 161 ms, 30 matching pairs, and no blockers, warnings, or formal coverage gaps. The client also preserved the plugin's limitations and called out the proxy flag and provider-returned unknown fields rather than presenting `PASS` as proof of safety.
+
+This closes the private-plugin agent-invocation gate and proves the end-to-end ChatGPT → PayBox → RugRadar → provider path for that observation. It does not prove public marketplace availability, future provider availability, or that every token receiving `PASS` is safe.
+
+### Connection-scope observation
+
+The supplied PayBox OAuth screen showed both configured wallet credentials selected with `Full access` and a `Never` expiration. That authorization is broader and longer-lived than RugRadar's read-only tool requires. The plugin still exposes no signing or transaction tool, and the recorded invocation performed no wallet action. For least privilege, reduce or remove wallet access and select a bounded expiration if PayBox permits it; otherwise disconnect the ChatGPT agent after the demo. Do not include OAuth, wallet, account, or personal-security screens in the public recording.
 
 ## Superseded upload
 
@@ -95,8 +113,8 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Participant registration/KYC | Not separately confirmed in this workspace |
 | Project submission | Confirmed submitted in the PayBox portal |
 | Private plugin enablement | Confirmed for the exact validated bundle hash and intended permissions |
-| Private-plugin agent invocation | Pending |
+| Private-plugin agent invocation | Confirmed through ChatGPT and PayBox OAuth; live read-only result returned |
 | Public X demo | Not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
 
-The submitted replacement is privately enabled. Discover its installed identifiers, invoke it through an agent, and record that result separately.
+The submitted replacement is privately enabled and has been invoked successfully through a connected ChatGPT agent. The remaining participant-controlled release gate is the sanitized public X demo and its recorded URL.

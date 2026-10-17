@@ -24,10 +24,15 @@ After uploading the exact tested artifact and allowing only the two documented h
 
 Suggested narration: “RugRadar is a Base-specific evidence gate. It combines normalized security and market context, makes missing coverage visible, and only marks current evidence policy-eligible when there are no blockers, warnings, or gaps. That is not a guarantee that a token is safe.”
 
+## Recorded private-agent proof
+
+The private ChatGPT-to-PayBox flow was exercised successfully at `2026-10-17T08:58:38Z`. ChatGPT discovered RugRadar, inspected `assess_token_risk`, and invoked it for Base USDC. The live result was `PASS` with `COMPLETE` coverage, both providers `AVAILABLE`, and no transaction proposed or initiated. Treat those values as timestamped demo evidence, not a permanent expected result.
+
 ## Recording checklist
 
 - Keep the video short and show the PayBox flow, not only a local terminal.
 - Do not call a mutable live address permanently safe or malicious.
 - Show source status and uncertainty, not a fabricated numeric score.
 - Do not expose email, KYC details, API keys, wallet secrets, portal tokens, or unrelated balances.
+- Do not show OAuth authorization, wallet-permission, account-security, or notification screens. The private setup used a broader wallet grant than this read-only plugin requires; reduce its scope or disconnect it after recording.
 - Record the hosted version identifier, artifact hash, submission confirmation, and public X URL outside the video as separate release evidence.
