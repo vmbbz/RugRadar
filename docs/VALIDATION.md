@@ -90,7 +90,17 @@ At `2026-10-17T08:58:38Z`, the participant supplied ChatGPT and PayBox screens p
 
 The returned structured evidence reported policy `2026-10-17.2`, `PASS`, `policyAllowsAction: true`, `COMPLETE` coverage, GoPlus `AVAILABLE` in 507 ms, DEX Screener `AVAILABLE` in 161 ms, 30 matching pairs, and no blockers, warnings, or formal coverage gaps. The client also preserved the plugin's limitations and called out the proxy flag and provider-returned unknown fields rather than presenting `PASS` as proof of safety.
 
-This closes the private-plugin agent-invocation gate and proves the end-to-end ChatGPT → PayBox → RugRadar → provider path for that observation. It does not prove public marketplace availability, future provider availability, or that every token receiving `PASS` is safe.
+At `2026-10-17T10:40:40.193Z`, a follow-up invocation assessed the unchanged Base address `0x0000000000000000000000000000000000000001`. The exact result was:
+
+- `UNKNOWN` with `policyAllowsAction: false` and `PARTIAL` coverage;
+- GoPlus `NO_DATA` in 493 ms;
+- DEX Screener `AVAILABLE` in 193 ms with zero Base pairs;
+- one `GOPLUS_UNAVAILABLE` evidence gap;
+- one `NO_DEX_PAIR` warning;
+- no blockers and no token identity or security evidence; and
+- no browsing, transaction proposal, or execution.
+
+This second call demonstrates the fail-closed path: absent security evidence could not become `PASS`, while independently available market evidence and its limitations remained visible. Together, the two calls close the private-plugin agent-invocation gate and prove the end-to-end ChatGPT → PayBox → RugRadar → provider path for favorable and incomplete evidence observations. They do not prove public marketplace availability, future provider availability, or that every token receiving `PASS` is safe.
 
 ### Connection-scope observation
 
@@ -113,7 +123,7 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Participant registration/KYC | Not separately confirmed in this workspace |
 | Project submission | Confirmed submitted in the PayBox portal |
 | Private plugin enablement | Confirmed for the exact validated bundle hash and intended permissions |
-| Private-plugin agent invocation | Confirmed through ChatGPT and PayBox OAuth; live read-only result returned |
+| Private-plugin agent invocation | Confirmed through ChatGPT and PayBox OAuth; `PASS`/`COMPLETE` and fail-closed `UNKNOWN`/`PARTIAL` results returned |
 | Public X demo | Not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
 

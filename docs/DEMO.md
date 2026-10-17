@@ -26,7 +26,9 @@ Suggested narration: “RugRadar is a Base-specific evidence gate. It combines n
 
 ## Recorded private-agent proof
 
-The private ChatGPT-to-PayBox flow was exercised successfully at `2026-10-17T08:58:38Z`. ChatGPT discovered RugRadar, inspected `assess_token_risk`, and invoked it for Base USDC. The live result was `PASS` with `COMPLETE` coverage, both providers `AVAILABLE`, and no transaction proposed or initiated. Treat those values as timestamped demo evidence, not a permanent expected result.
+The private ChatGPT-to-PayBox flow was exercised successfully at `2026-10-17T08:58:38Z`. ChatGPT discovered RugRadar, inspected `assess_token_risk`, and invoked it for Base USDC. The live result was `PASS` with `COMPLETE` coverage, both providers `AVAILABLE`, and no transaction proposed or initiated.
+
+A second agent invocation at `2026-10-17T10:40:40.193Z` assessed `0x0000000000000000000000000000000000000001`. It returned `UNKNOWN`, `PARTIAL` coverage, `policyAllowsAction: false`, GoPlus `NO_DATA`, DEX Screener `AVAILABLE` with no pair, one evidence gap, one warning, and no transaction. This is the preferred fail-closed segment or companion screenshot for the public demo. Treat both calls as timestamped evidence, not permanent expected results.
 
 ## Recording checklist
 
