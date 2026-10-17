@@ -1,6 +1,6 @@
 # RugRadar development plan
 
-Status: Assessment release submitted; private agent exercise, review, and public demo remain
+Status: Assessment release submitted and privately enabled; agent invocation, review, and public demo remain
 Plan date: 2026-10-16
 Initial release target: PayBox Chapter 1 submission
 Primary platform: Base mainnet through a PayBox marketplace plugin
@@ -589,4 +589,4 @@ During implementation, add and maintain:
 
 ## 17. Immediate next action
 
-Enable the submitted plugin privately in PayBox, invoke `assess_token_risk` through an agent, record that user-journey evidence, and complete the short public demo without overstating what a `PASS` verdict means.
+Invoke the privately enabled `assess_token_risk` tool through an agent, record that user-journey evidence, and complete the short public demo without overstating what a `PASS` verdict means.
