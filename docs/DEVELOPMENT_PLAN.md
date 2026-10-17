@@ -428,7 +428,7 @@ Exit: remote contains the reviewed plan and no artifacts/secrets.
 - Verify files against the official starter manifest.
 - Rename the sample project/server to RugRadar without changing tooling behavior.
 - Run the untouched echo starter in WSL2.
-- Add CI on Linux Node 24.21.0 if repository visibility and time allow.
+- Run CI on Linux Node 24.21.0 with pnpm 11.11.0, read-only permissions, and commit-pinned official actions.
 
 Exit: untouched starter passes; deterministic artifact hash recorded.
 

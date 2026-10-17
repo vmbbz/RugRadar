@@ -29,6 +29,8 @@ pnpm test
 
 Generated output is `dist/plugin.mjs`. The directory is ignored and must not be committed.
 
+The public repository runs the same pinned Linux validation through GitHub Actions on every push to `main` and every pull request. Third-party actions are pinned to immutable commit SHAs.
+
 ## Policy summary
 
 - `BLOCK`: explicit critical evidence is present, including honeypot/restriction signals, dangerous controller privileges, closed source, or a buy/sell/transfer tax above 1,000 basis points.

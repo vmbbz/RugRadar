@@ -65,6 +65,8 @@ wc -c dist/plugin.mjs
 
 Never commit `dist/`, `node_modules/`, logs, `.env` files, APK/AAB files, caches, or temporary downloads.
 
+The public repository also runs `.github/workflows/ci.yml` for pushes to `main` and pull requests. CI is supporting evidence, not a replacement for reproducing the artifact locally or running PayBox hosted checks.
+
 ## 4. Tool behavior
 
 Example input:
