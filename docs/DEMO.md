@@ -30,6 +30,16 @@ The private ChatGPT-to-PayBox flow was exercised successfully at `2026-10-17T08:
 
 A second agent invocation at `2026-10-17T10:40:40.193Z` assessed `0x0000000000000000000000000000000000000001`. It returned `UNKNOWN`, `PARTIAL` coverage, `policyAllowsAction: false`, GoPlus `NO_DATA`, DEX Screener `AVAILABLE` with no pair, one evidence gap, one warning, and no transaction. This is the preferred fail-closed segment or companion screenshot for the public demo. Treat both calls as timestamped evidence, not permanent expected results.
 
+## Published demo
+
+The public X thread was posted on 2026-10-17:
+
+- [RugRadar announcement and thread root](https://x.com/zerobyte0x00/status/2111414701490160106)
+- [Favorable assessment video](https://x.com/zerobyte0x00/status/2111414705776460189)
+- [Fail-closed `UNKNOWN` video](https://x.com/zerobyte0x00/status/2111414709299576907)
+
+The videos are public evidence of the recorded agent flow, not a guarantee that providers or token evidence will remain unchanged.
+
 ## Recording checklist
 
 - Keep the video short and show the PayBox flow, not only a local terminal.

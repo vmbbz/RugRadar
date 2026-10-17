@@ -12,7 +12,7 @@ The Base assessment milestone is implemented and locally validated. The plugin c
 
 The implementation deliberately contains no signing, private-key access, transaction proposal, swap, or broadcast path. `propose_guarded_buy` remains a gated future milestone and must not ship until its quote invariants, refusal behavior, PayBox simulation, and hosted checks all pass.
 
-Release `0.1.1` has passed hosted PayBox checks and a live portal tool call, has been submitted to the hackathon, and is privately enabled while PayBox reviews it. A live ChatGPT client has also discovered and invoked the enabled plugin through PayBox OAuth. Manual review and the public demo remain separate gates.
+Release `0.1.1` has passed hosted PayBox checks and a live portal tool call, has been submitted to the hackathon, and is privately enabled while PayBox reviews it. A live ChatGPT client has also discovered and invoked the enabled plugin through PayBox OAuth. The favorable and fail-closed paths are published in the [public X demo thread](https://x.com/zerobyte0x00/status/2111414701490160106); PayBox marketplace review remains a separate gate.
 
 ## Quick start
 

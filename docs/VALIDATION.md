@@ -106,6 +106,17 @@ This second call demonstrates the fail-closed path: absent security evidence cou
 
 The supplied PayBox OAuth screen showed both configured wallet credentials selected with `Full access` and a `Never` expiration. That authorization is broader and longer-lived than RugRadar's read-only tool requires. The plugin still exposes no signing or transaction tool, and the recorded invocation performed no wallet action. For least privilege, reduce or remove wallet access and select a bounded expiration if PayBox permits it; otherwise disconnect the ChatGPT agent after the demo. Do not include OAuth, wallet, account, or personal-security screens in the public recording.
 
+## Public demo evidence
+
+The participant published the [RugRadar X demo thread](https://x.com/zerobyte0x00/status/2111414701490160106) at `2026-10-17T11:11:07Z`. X's public embed metadata confirms the root post was authored by `@zerobyte0x00` and describes RugRadar as a read-only Base token risk gate using GoPlus and DEX Screener with explainable `PASS`, `REVIEW`, `BLOCK`, and `UNKNOWN` outcomes.
+
+The thread contains two direct video replies:
+
+- a [137-second favorable assessment demonstration](https://x.com/zerobyte0x00/status/2111414705776460189), posted at `2026-10-17T11:11:08Z`, that links the repository and reports the no-blocker, no-warning, complete-coverage result; and
+- a [60-second fail-closed demonstration](https://x.com/zerobyte0x00/status/2111414709299576907), posted at `2026-10-17T11:11:09Z`, that explains the expected `UNKNOWN` result when evidence is unavailable for the supplied address.
+
+This closes the public-demo evidence gate for both the favorable and incomplete-evidence paths. It does not establish PayBox marketplace approval or change the submitted artifact, its permissions, or its recorded hash.
+
 ## Superseded upload
 
 The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95957648608de0be0187905a6f5e871dfef367d1bd`) passed PayBox upload checks and its hosted tool call completed. That call correctly failed closed as `UNKNOWN`, but exposed an adapter defect: DEX Screener now returns some Base pool identifiers that are not 20-byte EVM addresses. Release `0.1.1` fixes that defect without weakening token-address validation. The original upload must not be submitted.
@@ -124,7 +135,8 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Project submission | Confirmed submitted in the PayBox portal |
 | Private plugin enablement | Confirmed for the exact validated bundle hash and intended permissions |
 | Private-plugin agent invocation | Confirmed through ChatGPT and PayBox OAuth; `PASS`/`COMPLETE` and fail-closed `UNKNOWN`/`PARTIAL` results returned |
-| Public X demo | Not confirmed in this workspace |
+| Public X demo | Confirmed: public thread plus favorable and fail-closed video replies |
+| Public marketplace review | Pending/not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
 
-The submitted replacement is privately enabled and has been invoked successfully through a connected ChatGPT agent. The remaining participant-controlled release gate is the sanitized public X demo and its recorded URL.
+The submitted replacement is privately enabled, has been invoked successfully through a connected ChatGPT agent, and has a public two-path X demonstration. PayBox marketplace review remains separate and is not yet confirmed in this workspace.

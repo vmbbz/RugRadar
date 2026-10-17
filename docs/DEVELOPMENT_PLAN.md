@@ -1,6 +1,6 @@
 # RugRadar development plan
 
-Status: Assessment release submitted, privately enabled, and exercised through ChatGPT; review and public demo remain
+Status: Assessment release submitted, privately enabled, exercised through ChatGPT, and publicly demonstrated; marketplace review remains
 Plan date: 2026-10-16
 Initial release target: PayBox Chapter 1 submission
 Primary platform: Base mainnet through a PayBox marketplace plugin
@@ -470,7 +470,7 @@ Exit: strict pass yields one accurately bound proposal; every other state yields
 
 Commit: `feat: add guarded Base token buy proposal`
 
-### Milestone 5 — submission package and demo (submission and private exercise complete; public demo pending)
+### Milestone 5 — submission package and demo (complete)
 
 - Freeze code early enough to retest the final bytes.
 - Write `DEMO.md` with exact prompts, addresses, expected verdicts, refusal path, proposal path, and caveats.
@@ -589,4 +589,4 @@ During implementation, add and maintain:
 
 ## 17. Immediate next action
 
-Record a short, sanitized public demo showing the live PayBox flow, one favorable assessment, and one rejected or coverage-gap path without overstating what a `PASS` verdict means. Publish its X URL separately, then reduce or revoke the broader-than-required ChatGPT wallet authorization.
+Reduce or revoke the broader-than-required ChatGPT wallet authorization, retain the published favorable and fail-closed demo evidence, and monitor PayBox marketplace review without conflating review status with the completed hackathon submission.
