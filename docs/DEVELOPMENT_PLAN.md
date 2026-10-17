@@ -490,6 +490,8 @@ Commit: `docs: finalize RugRadar submission and demo runbook`
 - Monitor provider schema changes and rotate credentials through PayBox, not code.
 - Triage review feedback without confusing a settings update with a code-version update.
 
+The submitted source is tagged `v0.1.1` at code-bearing commit `528cf9156bb8f5addfae7b4ac7d1e0f1e17c408d`, which produced the recorded `plugin.mjs` artifact. Later repository commits change documentation or repository metadata only.
+
 ## 13. Release gates
 
 ### Code gate
@@ -589,4 +591,4 @@ During implementation, add and maintain:
 
 ## 17. Immediate next action
 
-Reduce or revoke the broader-than-required ChatGPT wallet authorization, retain the published favorable and fail-closed demo evidence, and monitor PayBox marketplace review without conflating review status with the completed hackathon submission.
+Monitor PayBox marketplace review and provider health without conflating review status or later provider observations with the completed hackathon submission. The broader-than-required ChatGPT authorization used for the private demonstration has been revoked.

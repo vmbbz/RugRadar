@@ -7,6 +7,7 @@ This record identifies the currently tested assessment artifact and separates ve
 | Field | Value |
 |---|---|
 | Release | `0.1.1` |
+| Release tag | `v0.1.1` |
 | Policy | `2026-10-17.2` |
 | Validation time | `2026-10-17T09:06:32Z` (full-suite rerun after private-agent validation) |
 | Code-bearing commit | `528cf9156bb8f5addfae7b4ac7d1e0f1e17c408d` |
@@ -19,7 +20,7 @@ This record identifies the currently tested assessment artifact and separates ve
 | Runtime | Node.js `24.21.0`, Linux x64 |
 | Package manager | pnpm `11.11.0` |
 
-The remote `refs/heads/main` SHA was queried after the fix push and exactly matched the code-bearing commit above. A later docs-only validation commit does not change the generated artifact; the final remote SHA must still be verified after that commit is pushed.
+The annotated release tag `v0.1.1` identifies the code-bearing commit above. Subsequent commits change documentation or repository metadata only and do not change the generated artifact; branch and tag refs are verified separately after publication.
 
 ## Local evidence
 
@@ -106,6 +107,8 @@ This second call demonstrates the fail-closed path: absent security evidence cou
 
 The supplied PayBox OAuth screen showed both configured wallet credentials selected with `Full access` and a `Never` expiration. That authorization is broader and longer-lived than RugRadar's read-only tool requires. The plugin still exposes no signing or transaction tool, and the recorded invocation performed no wallet action. For least privilege, reduce or remove wallet access and select a bounded expiration if PayBox permits it; otherwise disconnect the ChatGPT agent after the demo. Do not include OAuth, wallet, account, or personal-security screens in the public recording.
 
+On 2026-10-17, after publishing the public demo, the participant confirmed that ChatGPT access had been revoked. This closes the identified least-privilege follow-up. The revocation is participant-attested and was not independently observable from the local workspace.
+
 ## Public demo evidence
 
 The participant published the [RugRadar X demo thread](https://x.com/zerobyte0x00/status/2111414701490160106) at `2026-10-17T11:11:07Z`. X's public embed metadata confirms the root post was authored by `@zerobyte0x00` and describes RugRadar as a read-only Base token risk gate using GoPlus and DEX Screener with explainable `PASS`, `REVIEW`, `BLOCK`, and `UNKNOWN` outcomes.
@@ -135,6 +138,7 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Project submission | Confirmed submitted in the PayBox portal |
 | Private plugin enablement | Confirmed for the exact validated bundle hash and intended permissions |
 | Private-plugin agent invocation | Confirmed through ChatGPT and PayBox OAuth; `PASS`/`COMPLETE` and fail-closed `UNKNOWN`/`PARTIAL` results returned |
+| ChatGPT OAuth connection | Participant confirmed access revoked after the public demo |
 | Public X demo | Confirmed: public thread plus favorable and fail-closed video replies |
 | Public marketplace review | Pending/not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
