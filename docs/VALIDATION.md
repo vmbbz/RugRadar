@@ -40,6 +40,20 @@ The remote `refs/heads/main` SHA was queried after the fix push and exactly matc
 
 The live sample proves connectivity only at the recorded time. It does not freeze provider data or establish that any token will retain a particular verdict.
 
+## Hosted PayBox evidence
+
+The replacement `0.1.1` upload was exercised through the PayBox developer portal at `2026-10-17T08:36:00.743Z` using Base USDC (`0x833589fcd6edb6e08f4c7c32d4f71b54bda02913`). The schema-valid result reported:
+
+- server version `0.1.1` and policy `2026-10-17.2`;
+- `PASS` with `policyAllowsAction: true`;
+- `COMPLETE` coverage;
+- GoPlus `AVAILABLE` in 523 ms;
+- DEX Screener `AVAILABLE` in 197 ms;
+- 30 matching Base pairs, no blockers, no warnings, and no evidence gaps; and
+- `isError: false`.
+
+This proves the replacement's hosted read-only path worked for that invocation. It does not turn `PASS` into a safety guarantee, prove future provider availability, or establish project submission by itself.
+
 ## Superseded upload
 
 The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95957648608de0be0187905a6f5e871dfef367d1bd`) passed PayBox upload checks and its hosted tool call completed. That call correctly failed closed as `UNKNOWN`, but exposed an adapter defect: DEX Screener now returns some Base pool identifiers that are not 20-byte EVM addresses. Release `0.1.1` fixes that defect without weakening token-address validation. The original upload must not be submitted.
@@ -51,13 +65,13 @@ The original `0.1.0` artifact (`405056` bytes, SHA-256 `8acdcd2b7c9ec8cb0ee6fb95
 | Local assessment implementation | Release `0.1.1` verified |
 | Source pushed to GitHub | Verified for the current code-bearing commit above |
 | GitHub Actions CI | Not available; first job never started because the owner account is locked due to a billing issue |
-| PayBox artifact upload | Superseded `0.1.0` uploaded; `0.1.1` replacement pending |
-| Hosted PayBox checks | Passed for superseded upload; replacement pending |
-| Portal tool call | Succeeded for superseded upload but revealed the fixed DEX compatibility defect; replacement pending |
+| PayBox artifact upload | Release `0.1.1` uploaded as the replacement |
+| Hosted PayBox checks | Replacement loaded and exposed the expected tool; portal tool execution succeeded |
+| Portal tool call | Release `0.1.1` returned `PASS` with `COMPLETE` coverage and both providers `AVAILABLE` |
 | Participant registration/KYC | Not separately confirmed in this workspace |
 | Project submission | Not submitted |
 | Private-plugin agent exercise | Pending submission |
 | Public X demo | Not confirmed in this workspace |
 | Guarded buy/proposal path | Not implemented and not exposed |
 
-Do not submit the superseded artifact. Upload the current artifact, repeat hosted checks and the Base USDC tool call, and confirm `COMPLETE` coverage before accepting terms and selecting **Submit Project**.
+The replacement is ready for submission. Accept the hackathon terms and select **Submit Project**, then record the portal's submission confirmation separately.
